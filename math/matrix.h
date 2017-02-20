@@ -43,10 +43,21 @@ namespace math
                 m_buffer = obj.m_buffer;
         }
 
-        ~matrix() { delete[] m_buffer; }
+        ~matrix()
+        {
+            if (!m_persistent)
+                delete[] m_buffer;
+        }
 
         uint rows() const { return m_rows; }
         uint columns() const { return m_columns; }
+
+        void fill(T t)
+        {
+            uint length = m_rows*m_columns;
+            for(int i = 0; i < length; ++i)
+                m_buffer[i] = t;
+        }
 
         T* to_buffer()
         {
@@ -54,7 +65,7 @@ namespace math
             return m_buffer;
         }
 
-        T* to_buffer() const
+        T* to_buffer_const() const
         {
             uint length = m_rows*m_columns;
             T* buffer = new T[length];
@@ -70,12 +81,12 @@ namespace math
         public:
             T& operator[](uint column)
             {
-                if(column >= m_columns)
+                if(column >= m_matrix.m_columns)
                     throw std::out_of_range("column out of range.");
-                if(m_row >= m_rows)
+                if(m_row >= m_matrix.m_rows)
                     throw std::out_of_range("row out of range.");
 
-                return m_matrix.m_buffer[column+m_row*m_rows];
+                return m_matrix.m_buffer[column+m_row*m_matrix.m_rows];
             }
         private:
             single_row(matrix& mt) : m_matrix(mt) {}
@@ -95,6 +106,7 @@ namespace math
         bool m_persistent;
         single_row m_row_mask;
     }; // class matrix
+
 }
 
 #endif //_MATRIX_H_
