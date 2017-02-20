@@ -1,6 +1,6 @@
 CC = g++
 
-SRC = draw.cpp transform.cpp
+SRC = paint.cpp transform.cpp
 
 CCFLAGS = -g -Wall
 
