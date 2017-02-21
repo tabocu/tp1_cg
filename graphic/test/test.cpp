@@ -6,5 +6,5 @@ using namespace graphic;
 
 int main()
 {
-    paint::draw_line_bresenham();
+    cout << "----Graphic Test----" << endl;
 }
