@@ -5,4 +5,37 @@ MainWindow::MainWindow(QWidget *parent) :
 {
 }
 
+void MainWindow::createActions()
+{
+ 
+}
 
+void MainWindow::newFile()
+{
+
+}
+
+void MainWindow::drawLine()
+{
+
+}
+
+void MainWindow::drawRectangle()
+{
+
+}
+
+void MainWindow::drawCircle()
+{
+
+}
+
+void MainWindow::chooseColor()
+{
+
+}
+
+void MainWindow::showAbout()
+{
+
+}
