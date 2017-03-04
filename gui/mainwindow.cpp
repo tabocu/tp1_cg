@@ -27,23 +27,32 @@ void MainWindow::createActions()
     QMenu *drawMenu = menuBar()->addMenu(tr("&Draw"));
     QToolBar *drawToolBar = addToolBar(tr("Draw"));
 
+    QActionGroup *drawActGroup = new QActionGroup(this);
+
     QAction *lineAct = new QAction(tr("&Line"), this);
     lineAct->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_L));
     lineAct->setStatusTip(tr("Draw line"));
+    lineAct->setCheckable(true);
+    lineAct->setChecked(true);
     drawMenu->addAction(lineAct);
     drawToolBar->addAction(lineAct);
+    drawActGroup->addAction(lineAct);
 
     QAction *rectangleAct = new QAction(tr("&Rectangle"), this);
     rectangleAct->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
     rectangleAct->setStatusTip(tr("Draw rectangle"));
+    rectangleAct->setCheckable(true);
     drawMenu->addAction(rectangleAct);
     drawToolBar->addAction(rectangleAct);
+    drawActGroup->addAction(rectangleAct);
 
     QAction *circleAct = new QAction(tr("&Circle"), this);
     circleAct->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_C));
     circleAct->setStatusTip(tr("Draw circle"));
+    circleAct->setCheckable(true);
     drawMenu->addAction(circleAct);
     drawToolBar->addAction(circleAct);
+    drawActGroup->addAction(circleAct);
 
     QMenu *helpMenu = menuBar()->addMenu(tr("&Help"));
 
