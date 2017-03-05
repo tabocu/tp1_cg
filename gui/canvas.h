@@ -8,10 +8,19 @@ class Canvas : public QWidget
     Q_OBJECT
 
 public:
+
+    enum DrawType {
+        DrawLine,
+        DrawSquare,
+        DrawCircle,
+    };
+
     Canvas(QWidget *parent = 0);
 public slots:
 
 protected:
+    virtual void mousePressEvent(QMouseEvent *event);
+    virtual void mouseReleaseEvent(QMouseEvent *event);
 
 private:
 
