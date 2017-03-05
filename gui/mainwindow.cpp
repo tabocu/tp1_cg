@@ -4,10 +4,12 @@
 
 #include <QtWidgets>
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent)
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , m_canvas(new Canvas(this))
 {
     createActions();
+    setCentralWidget(m_canvas);
 }
 
 void MainWindow::createActions()

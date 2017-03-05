@@ -2,7 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "canvas.h"
 
+class Canvas;
 
 class MainWindow : public QMainWindow
 {
@@ -29,6 +31,9 @@ private slots:
 
     // Help action
     void showAbout();
+
+private:
+    Canvas *m_canvas;
 
 };
 
