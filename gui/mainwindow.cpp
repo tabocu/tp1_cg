@@ -102,4 +102,7 @@ void MainWindow::chooseColor()
 void MainWindow::showAbout()
 {
     std::clog << "Command: Show about" << std::endl;
+    QMessageBox::about(this, tr("About Application"),
+            tr("This <b>Application</b> was developed by <b>Tales Bontempo Cunha</b> "
+               "to <b>Graphic Computation Class</b>"));
 }
