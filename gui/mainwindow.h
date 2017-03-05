@@ -11,13 +11,16 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
 
+protected:
+    void closeEvent(QCloseEvent * event) Q_DECL_OVERRIDE;
+
 private:
     void createActions();
 
 private slots:
     // File actions
     void newFile();
-    
+
     // Draw action
     void drawLine();
     void drawRectangle();
