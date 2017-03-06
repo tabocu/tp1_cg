@@ -84,16 +84,19 @@ void MainWindow::newFile()
 void MainWindow::drawLine()
 {
     std::clog << "Command: Choose line" << std::endl;
+    m_canvas->setDrawType(Canvas::DrawTypeEnum::DrawLine);
 }
 
 void MainWindow::drawRectangle()
 {
     std::clog << "Command: Choose rectangle" << std::endl;
+    m_canvas->setDrawType(Canvas::DrawTypeEnum::DrawRectangle);
 }
 
 void MainWindow::drawCircle()
 {
     std::clog << "Command: Choose circle" << std::endl;
+    m_canvas->setDrawType(Canvas::DrawTypeEnum::DrawCircle);
 }
 
 void MainWindow::chooseColor()
