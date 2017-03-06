@@ -4,6 +4,12 @@
 #include <QPoint>
 
 #include <iostream>
+#include <string>
+
+static const std::string DRAW_TYPE[Canvas::DrawTypeEnum::Invalid] = {
+    "Line",
+    "Rectangle",
+    "Circle"};
 
 std::ostream& operator<<(std::ostream &os, const QPoint &point)
 {
@@ -11,7 +17,7 @@ std::ostream& operator<<(std::ostream &os, const QPoint &point)
     os << "x: " << point.x();
     os << " | ";
     os << "y: " << point.y();
-    os << "]" << std::endl;
+    os << "]";
     return os;
 }
 
