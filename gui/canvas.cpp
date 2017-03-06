@@ -1,5 +1,6 @@
 #include "canvas.h"
 
+#include <QImage>
 #include <QMouseEvent>
 #include <QPoint>
 
@@ -37,4 +38,9 @@ void Canvas::mousePressEvent(QMouseEvent *event)
 void Canvas::mouseReleaseEvent(QMouseEvent *event)
 {
     std::clog << "Command: Mouse released " << event->pos() << std::endl;
+}
+
+void Canvas::paintEvent(QPaintEvent *)
+{
+    std::clog << "Command: Repaint canvas" << std::endl;
 }

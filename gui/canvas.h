@@ -11,7 +11,7 @@ public:
 
     enum DrawTypeEnum {
         DrawLine,
-        DrawSquare,
+        DrawRectangle,
         DrawCircle,
         Invalid
     };
@@ -24,8 +24,9 @@ public:
 public slots:
 
 protected:
-    virtual void mousePressEvent(QMouseEvent *event);
-    virtual void mouseReleaseEvent(QMouseEvent *event);
+    virtual void mousePressEvent   (QMouseEvent *event) Q_DECL_OVERRIDE;
+    virtual void mouseReleaseEvent (QMouseEvent *event) Q_DECL_OVERRIDE;
+    virtual void paintEvent        (QPaintEvent *event) Q_DECL_OVERRIDE;
 
 private:
     DrawTypeEnum m_drawType;
