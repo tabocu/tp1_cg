@@ -9,13 +9,18 @@ class Canvas : public QWidget
 
 public:
 
-    enum DrawType {
+    enum DrawTypeEnum {
         DrawLine,
         DrawSquare,
         DrawCircle,
+        Invalid
     };
 
     Canvas(QWidget *parent = 0);
+
+    void setDrawType(DrawTypeEnum drawType) { m_drawType = drawType; }
+    DrawTypeEnum getDrawType() { return m_drawType; }
+
 public slots:
 
 protected:
@@ -23,7 +28,7 @@ protected:
     virtual void mouseReleaseEvent(QMouseEvent *event);
 
 private:
-
+    DrawTypeEnum m_drawType;
 };
 
 #endif // _CANVAS_H_

@@ -17,6 +17,7 @@ std::ostream& operator<<(std::ostream &os, const QPoint &point)
 
 Canvas::Canvas(QWidget *parent)
     : QWidget(parent)
+    , m_drawType(DrawTypeEnum::DrawLine)
 {
     setBackgroundRole(QPalette::Base);
     setAutoFillBackground(true);
