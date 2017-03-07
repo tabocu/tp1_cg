@@ -2,6 +2,7 @@
 
 #include <QImage>
 #include <QMouseEvent>
+#include <QPainter>
 #include <QPoint>
 #include <QSize>
 
@@ -49,6 +50,7 @@ Canvas::Canvas(QWidget *parent)
     , m_drawType(DrawTypeEnum::DrawLine)
     , m_scale(1.0)
     , m_minEdge(0.0,0.0)
+    , m_bgColor(Qt::white)
 {
     setBackgroundRole(QPalette::Base);
     setAutoFillBackground(true);
@@ -83,5 +85,16 @@ void Canvas::mouseReleaseEvent(QMouseEvent *event)
 void Canvas::paintEvent(QPaintEvent *)
 {
     std::clog << "Command: Repaint canvas" << std::endl;
+
+    QPainter painter(this);
+
+    QImage image(size(), QImage::Format_RGB32);
+    image.fill(m_bgColor);
+    for(std::list<graphic::geometry*>::const_iterator it = m_geometry.begin();
+            it != m_geometry.end(); ++it)
+        if(*it != NULL)
+            (*it)->paint(image,getMinEdge(),getMaxEdge());
+
+    painter.drawImage(QPoint(),image);
 }
 

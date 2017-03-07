@@ -1,6 +1,11 @@
 #ifndef _CANVAS_H_
 #define _CANVAS_H_
 
+#include "geometry.h"
+
+#include <stack>
+
+#include <QColor>
 #include <QPointF>
 #include <QWidget>
 
@@ -37,6 +42,9 @@ private:
     DrawTypeEnum m_drawType;
     qreal m_scale;
     QPointF m_minEdge;
+
+    std::list<graphic::geometry*> m_geometry;
+    QColor m_bgColor;
 };
 
 #endif // _CANVAS_H_
