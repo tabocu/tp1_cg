@@ -1,6 +1,7 @@
 #ifndef _CANVAS_H_
 #define _CANVAS_H_
 
+#include <QPointF>
 #include <QWidget>
 
 class Canvas : public QWidget
@@ -21,6 +22,10 @@ public:
     void setDrawType(DrawTypeEnum drawType) { m_drawType = drawType; }
     DrawTypeEnum getDrawType() { return m_drawType; }
 
+    qreal getScale();
+    QPointF getMinEdge();
+    QPointF getMaxEdge();
+
 public slots:
 
 protected:
@@ -30,6 +35,8 @@ protected:
 
 private:
     DrawTypeEnum m_drawType;
+    qreal m_scale;
+    QPointF m_minEdge;
 };
 
 #endif // _CANVAS_H_

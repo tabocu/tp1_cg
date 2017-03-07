@@ -3,6 +3,7 @@
 #include <QImage>
 #include <QMouseEvent>
 #include <QPoint>
+#include <QSize>
 
 #include <iostream>
 #include <string>
@@ -22,12 +23,51 @@ std::ostream& operator<<(std::ostream &os, const QPoint &point)
     return os;
 }
 
+std::ostream& operator<<(std::ostream &os, const QPointF &point)
+{
+    os << "[";
+    os << "x: " << point.x();
+    os << " | ";
+    os << "y: " << point.y();
+    os << "]";
+    return os;
+}
+
+std::ostream& operator<<(std::ostream &os, const QSize &size)
+{
+    os << "[";
+    os << "w: " << size.width();
+    os << " | ";
+    os << "h: " << size.height();
+    os << "]";
+    return os;
+}
+
+
 Canvas::Canvas(QWidget *parent)
     : QWidget(parent)
     , m_drawType(DrawTypeEnum::DrawLine)
+    , m_scale(1.0)
+    , m_minEdge(0.0,0.0)
 {
     setBackgroundRole(QPalette::Base);
     setAutoFillBackground(true);
+}
+
+qreal Canvas::getScale()
+{
+    return m_scale;
+}
+
+QPointF Canvas::getMinEdge()
+{
+    return m_minEdge;
+}
+
+QPointF Canvas::getMaxEdge()
+{
+    QPointF maxEdge(size().width(),size().height());
+    return maxEdge*m_scale;
 }
 
 void Canvas::mousePressEvent(QMouseEvent *event)
@@ -44,3 +84,4 @@ void Canvas::paintEvent(QPaintEvent *)
 {
     std::clog << "Command: Repaint canvas" << std::endl;
 }
+
