@@ -5,7 +5,7 @@ graphic::line::line(QPointF p1, QPointF p2)
     , m_p2(p2)
 {}
 
-void graphic::line::paint(QImage &image, QPointF minEdge, QPointF maxEdge)
+void graphic::line::paint(QImage &image, QPointF minEdge, QPointF maxEdge) const
 {
 
 }
@@ -15,7 +15,7 @@ graphic::circle::circle(QPointF p1, QPointF)
     , m_radius(0)
 {}
 
-void graphic::circle::paint(QImage &, QPointF, QPointF)
+void graphic::circle::paint(QImage &, QPointF, QPointF) const
 {
 
 }
