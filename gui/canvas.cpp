@@ -5,6 +5,7 @@
 #include <QPainter>
 #include <QPoint>
 #include <QSize>
+#include <QtMath>
 
 #include <iostream>
 #include <string>
@@ -75,7 +76,54 @@ QPointF Canvas::getMaxEdge()
 
 void Canvas::mousePressEvent(QMouseEvent *event)
 {
-    std::clog << "Command: Mouse pressed " << event->pos() << std::endl;
+    if (event->button() == Qt::LeftButton)
+    {
+        QPointF pos = event->localPos();
+        std::clog << "Command: Mouse pressed " << pos << std::endl;
+        switch (m_drawType)
+        {
+            case Canvas::DrawLine:
+            {
+                graphic::line *new_line = new graphic::line(pos,pos);
+                m_geometry.push_back(new_line);
+                break;
+            }
+            case Canvas::DrawCircle:
+            {
+                graphic::circle *new_circle = new graphic::circle(pos,0);
+                m_geometry.push_back(new_circle);
+                break;
+            }
+            default:
+                break;
+        }
+        repaint();
+    }
+}
+
+void Canvas::mouseMoveEvent(QMouseEvent *event)
+{
+    QPointF pos = event->localPos();
+    switch (m_drawType)
+    {
+        case Canvas::DrawLine:
+        {
+            graphic::line *new_line = (graphic::line*) m_geometry.back();
+            new_line->setP2(pos);
+            break;
+        }
+        case Canvas::DrawCircle:
+        {
+            graphic::circle *new_circle = (graphic::circle*) m_geometry.back();
+            QPointF diff = new_circle->getCenter()-pos;
+            qreal radius = qSqrt(diff.x()*diff.x()+diff.y()*diff.y());
+            new_circle->setRadius(radius);
+            break;
+        }
+        default:
+            break;
+    }
+    repaint();
 }
 
 void Canvas::mouseReleaseEvent(QMouseEvent *event)
