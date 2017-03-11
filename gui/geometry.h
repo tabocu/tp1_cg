@@ -24,6 +24,8 @@ namespace graphic
     public:
         line(QPointF p1, QPointF p2);
 
+        void set(QPointF p1, QPointF p2) { m_p1 = p1; m_p2 = p2; }
+
         void setP1(QPointF point) { m_p1 = point; }
         void setP2(QPointF point) { m_p2 = point; }
 
@@ -33,6 +35,24 @@ namespace graphic
         /*virtual*/ void paint(QImage *image, QPointF minEdge, QPointF maxEdge) const;
     private:
         QPointF m_p1, m_p2;
+    };
+
+    class rectangle : public geometry
+    {
+    public:
+        rectangle(QPointF pq, QPointF p2);
+
+        void set(QPointF p1, QPointF p2);
+
+        void setP1(QPointF point);
+        void setP2(QPointF point);
+
+        QPointF getP1() { return l1.getP1(); }
+        QPointF getP2() { return l3.getP2(); }
+
+        /*virtual*/ void paint(QImage *image, QPointF minEdge, QPointF maxEdge) const;
+    private:
+        line l1, l2, l3, l4;
     };
 
     class circle : public geometry
