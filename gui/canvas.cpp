@@ -88,6 +88,12 @@ void Canvas::mousePressEvent(QMouseEvent *event)
                 m_geometry.push_back(new_line);
                 break;
             }
+            case Canvas::DrawRectangle:
+            {
+                graphic::rectangle *new_rectangle = new graphic::rectangle(pos,pos);
+                m_geometry.push_back(new_rectangle);
+                break;
+            }
             case Canvas::DrawCircle:
             {
                 graphic::circle *new_circle = new graphic::circle(pos,0);
@@ -110,6 +116,12 @@ void Canvas::mouseMoveEvent(QMouseEvent *event)
         {
             graphic::line *new_line = (graphic::line*) m_geometry.back();
             new_line->setP2(pos);
+            break;
+        }
+        case Canvas::DrawRectangle:
+        {
+            graphic::rectangle *new_rectangle = (graphic::rectangle*) m_geometry.back();
+            new_rectangle->setP2(pos);
             break;
         }
         case Canvas::DrawCircle:
