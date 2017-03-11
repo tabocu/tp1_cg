@@ -15,8 +15,8 @@ namespace graphic
         void setLineColor(QColor color) { m_lineColor = color; }
         QColor getLineColor() { return m_lineColor; }
 
-    private:
-        QColor m_lineColor;
+    protected:
+        QColor m_lineColor = Qt::black;
     };
 
     class line : public geometry
