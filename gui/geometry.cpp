@@ -15,7 +15,7 @@ void graphic::line::paint(QImage *image, QPointF, QPointF) const
 
 graphic::circle::circle(QPointF center, qreal radius)
     : m_center(center)
-    , m_radius(0)
+    , m_radius(radius)
 {}
 
 void graphic::circle::paint(QImage *image, QPointF, QPointF) const
