@@ -54,6 +54,7 @@ Canvas::Canvas(QWidget *parent)
 {
     setBackgroundRole(QPalette::Base);
     setAutoFillBackground(true);
+    m_geometry.push_back(new graphic::line(QPointF(5.0,5.0),QPointF(20.0,20.0)));
 }
 
 qreal Canvas::getScale()
