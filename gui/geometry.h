@@ -44,7 +44,7 @@ namespace graphic
         void setRadius(qreal radius) { m_radius = radius; }
 
         QPointF getCenter() { return m_center; }
-        QPointF getRadius() { return m_radius; }
+        qreal   getRadius() { return m_radius; }
 
         /*virtual*/ void paint(QImage *image, QPointF minEdge, QPointF maxEdge) const;
     private:
