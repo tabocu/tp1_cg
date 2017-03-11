@@ -13,8 +13,8 @@ void graphic::line::paint(QImage *image, QPointF, QPointF) const
     painter.drawLine(m_p1,m_p2);
 }
 
-graphic::circle::circle(QPointF p1, QPointF)
-    : m_center(p1)
+graphic::circle::circle(QPointF center, qreal radius)
+    : m_center(center)
     , m_radius(0)
 {}
 
