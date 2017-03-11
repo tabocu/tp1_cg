@@ -1,4 +1,5 @@
 #include "geometry.h"
+#include "paint.h"
 
 #include <QPainter>
 
@@ -9,8 +10,7 @@ graphic::line::line(QPointF p1, QPointF p2)
 
 void graphic::line::paint(QImage *image, QPointF, QPointF) const
 {
-    QPainter painter(image);
-    painter.drawLine(m_p1,m_p2);
+    graphic::paint::draw_line_bresenham(image,m_lineColor,m_p1.toPoint(),m_p2.toPoint());
 }
 
 graphic::rectangle::rectangle(QPointF p1, QPointF p2)
