@@ -1,5 +1,8 @@
 #include "paint.h"
 
+#include <iostream>
+
+
 using namespace graphic;
 
 void paint::draw_line_bresenham(QImage *image,
@@ -65,8 +68,41 @@ void paint::draw_line_bresenham(QImage *image,
     }
 }
 
-void paint::draw_circle_bresenham(QImage *image, QPoint center, qreal radius)
+void plot_circle_symmetric(QImage *image,
+        const QColor &color,
+        const QPoint &center,
+        const QPoint &pixel)
 {
+    image->setPixelColor(center.x()+pixel.x(),center.y()+pixel.y(),color);
+    image->setPixelColor(center.x()-pixel.x(),center.y()-pixel.y(),color);
+    image->setPixelColor(center.x()+pixel.x(),center.y()-pixel.y(),color);
+    image->setPixelColor(center.x()-pixel.x(),center.y()+pixel.y(),color);
+    image->setPixelColor(center.x()+pixel.y(),center.y()+pixel.x(),color);
+    image->setPixelColor(center.x()-pixel.y(),center.y()-pixel.x(),color);
+    image->setPixelColor(center.x()+pixel.y(),center.y()-pixel.x(),color);
+    image->setPixelColor(center.x()-pixel.y(),center.y()+pixel.x(),color);
+}
 
+void paint::draw_circle_bresenham(QImage *image,
+        const QColor &color,
+        const QPoint &center,
+        int radius)
+{
+    QPoint pixel(0,radius);
+    int p = 3 - (radius << 1);
+
+    plot_circle_symmetric(image,color,center,pixel);
+
+    while(pixel.x() < pixel.y())
+    {
+        if (p < 0) p += (pixel.x() << 2) + 6;
+        else
+        {
+            p += ((pixel.x()-pixel.y()) << 2) + 10;
+            pixel.ry()--;
+        }
+        pixel.rx()++;
+        plot_circle_symmetric(image,color,center,pixel);
+    }
 }
 

@@ -15,7 +15,11 @@ namespace graphic
                 const QPoint &p1,
                 const QPoint &p2);
 
-        void static draw_circle_bresenham(QImage *image, QPoint center, qreal radius);
+        void static draw_circle_bresenham(
+                QImage *image, 
+                const QColor &color,
+                const QPoint &center, 
+                int radius);
     };
 }
 
