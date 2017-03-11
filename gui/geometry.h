@@ -27,6 +27,9 @@ namespace graphic
         void setP1(QPointF point) { m_p1 = point; }
         void setP2(QPointF point) { m_p2 = point; }
 
+        QPointF getP1() { return m_p1; }
+        QPointF getP2() { return m_p2; }
+
         /*virtual*/ void paint(QImage *image, QPointF minEdge, QPointF maxEdge) const;
     private:
         QPointF m_p1, m_p2;
@@ -39,6 +42,9 @@ namespace graphic
 
         void setCenter(QPointF center) { m_center = center; }
         void setRadius(qreal radius) { m_radius = radius; }
+
+        QPointF getCenter() { return m_center; }
+        QPointF getRadius() { return m_radius; }
 
         /*virtual*/ void paint(QImage *image, QPointF minEdge, QPointF maxEdge) const;
     private:
