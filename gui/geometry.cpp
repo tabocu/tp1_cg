@@ -2,6 +2,7 @@
 #include "paint.h"
 
 #include <QPainter>
+#include <QtMath>
 
 graphic::line::line(QPointF p1, QPointF p2)
     : m_p1(p1)
@@ -61,7 +62,6 @@ graphic::circle::circle(QPointF center, qreal radius)
 
 void graphic::circle::paint(QImage *image, QPointF, QPointF) const
 {
-    QPainter painter(image);
-    painter.drawEllipse(m_center,m_radius,m_radius);
+    graphic::paint::draw_circle_bresenham(image,m_lineColor,m_center.toPoint(),qRound(m_radius));
 }
 
