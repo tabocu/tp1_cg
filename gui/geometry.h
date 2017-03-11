@@ -24,6 +24,9 @@ namespace graphic
     public:
         line(QPointF p1, QPointF p2);
 
+        void setP1(QPointF point) { m_p1 = point; }
+        void setP2(QPointF point) { m_p2 = point; }
+
         /*virtual*/ void paint(QImage *image, QPointF minEdge, QPointF maxEdge) const;
     private:
         QPointF m_p1, m_p2;
@@ -32,7 +35,10 @@ namespace graphic
     class circle : public geometry
     {
     public:
-        circle(QPointF p1, QPointF p2);
+        circle(QPointF center, qreal radius);
+
+        void setCenter(QPointF center) { m_center = center; }
+        void setRadius(qreal radius) { m_radius = radius; }
 
         /*virtual*/ void paint(QImage *image, QPointF minEdge, QPointF maxEdge) const;
     private:
