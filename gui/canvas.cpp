@@ -88,13 +88,14 @@ void Canvas::paintEvent(QPaintEvent *)
 
     QPainter painter(this);
 
-    QImage image(size(), QImage::Format_RGB32);
-    image.fill(m_bgColor);
+    QImage *image = new QImage(size(), QImage::Format_RGB32);
+    image->fill(m_bgColor);
     for(std::list<graphic::geometry*>::const_iterator it = m_geometry.begin();
             it != m_geometry.end(); ++it)
         if(*it != NULL)
             (*it)->paint(image,getMinEdge(),getMaxEdge());
 
-    painter.drawImage(QPoint(),image);
+    painter.drawImage(QPoint(),*image);
+    delete image;
 }
 

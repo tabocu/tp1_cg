@@ -10,7 +10,7 @@ namespace graphic
     class geometry
     {
     public:
-        virtual void paint(QImage &image, QPointF minEdge, QPointF maxEdge) const = 0;
+        virtual void paint(QImage *image, QPointF minEdge, QPointF maxEdge) const = 0;
 
         void setLineColor(QColor color) { m_lineColor = color; }
         QColor getLineColor() { return m_lineColor; }
@@ -24,7 +24,7 @@ namespace graphic
     public:
         line(QPointF p1, QPointF p2);
 
-        /*virtual*/ void paint(QImage &image, QPointF minEdge, QPointF maxEdge) const;
+        /*virtual*/ void paint(QImage *image, QPointF minEdge, QPointF maxEdge) const;
     private:
         QPointF m_p1, m_p2;
     };
@@ -34,7 +34,7 @@ namespace graphic
     public:
         circle(QPointF p1, QPointF p2);
 
-        /*virtual*/ void paint(QImage &image, QPointF minEdge, QPointF maxEdge) const;
+        /*virtual*/ void paint(QImage *image, QPointF minEdge, QPointF maxEdge) const;
     private:
         QPointF m_center;
         qreal m_radius;
