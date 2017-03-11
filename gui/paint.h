@@ -9,7 +9,12 @@ namespace graphic
     class paint
     {
     public:
-        void static draw_line_bresenham(QImage *image, QPoint p1, QPoint p2);
+        void static draw_line_bresenham(
+                QImage *image,
+                const QColor &color,
+                const QPoint &p1,
+                const QPoint &p2);
+
         void static draw_circle_bresenham(QImage *image, QPoint center, qreal radius);
     };
 }
